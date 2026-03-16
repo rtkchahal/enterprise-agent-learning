@@ -1,0 +1,36 @@
+{
+  "PostToolUse": [
+    {
+      "matcher": "Edit|Write",
+      "description": "Run ruff on edited Python files",
+      "hooks": [
+        {
+          "type": "command",
+          "command": "cd /Users/ravichahal/projects/enterprise-agent-learning && ruff check src/ tests/ --quiet 2>&1 | head -20 || true"
+        }
+      ]
+    },
+    {
+      "matcher": "Edit|Write",
+      "description": "Run mypy type check after Python edits",
+      "hooks": [
+        {
+          "type": "command",
+          "command": "cd /Users/ravichahal/projects/enterprise-agent-learning && python -m mypy src/ --ignore-missing-imports --no-error-summary 2>&1 | tail -5 || true"
+        }
+      ]
+    }
+  ],
+  "Stop": [
+    {
+      "matcher": "*",
+      "description": "Run tests before session ends",
+      "hooks": [
+        {
+          "type": "command",
+          "command": "cd /Users/ravichahal/projects/enterprise-agent-learning && python -m pytest --tb=short -q 2>&1 | tail -10 || true"
+        }
+      ]
+    }
+  ]
+}
