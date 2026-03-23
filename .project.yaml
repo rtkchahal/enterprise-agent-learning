@@ -1,0 +1,13 @@
+name: enterprise-agent-learning
+description: Open source knowledge store with BM25 + temporal decay for self-learning enterprise agents
+type: python
+repo: github.com/rtkchahal/enterprise-agent-learning
+agent: growth-lab
+deploy: none
+channels:
+  - discord:1478317876355010652  # #growth-lab
+content:
+  docs: docs/
+  src: src/enterprise_agent_learning/
+pipeline:
+  - planner → tdd-guide → code-reviewer → refactor-cleaner
